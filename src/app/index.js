@@ -25,6 +25,10 @@ class App extends React.Component {
 
 
 class GetData extends React.Component {
+	constructor() {
+		super();
+	}
+
 	render() {
 		return (
 			<div>
@@ -60,10 +64,10 @@ class Item extends React.Component {
 		console.log(productArray)
 		let product1 = data[0].productTitle
 		console.log(product1)
-		let elements = data.results.map((data) => {
+		let elements = data.map((product) => {
 			return (
-				<div key={pic.results}>
-					<p>{pic.productTitle}</p>
+				<div key={product.results}>
+					<p>{product.id}</p>
 				</div>
 				)
 		})
