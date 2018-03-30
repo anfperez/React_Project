@@ -23,6 +23,67 @@ class App extends React.Component {
 	}
 }
 
+
+class GetData extends React.Component {
+	render() {
+		return (
+			<div>
+				<Item />
+			</div>
+		)
+	}
+}
+//this needs a render function to work
+class Item extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			elements: [],
+		};
+	}
+	componentWillMount() {
+	console.log("got here")
+	fetch('http://tech.work.co/shopping-cart/products.json')
+	.then(results => {
+		return results.json();
+	}).then(data => {
+		console.log("got here too")
+		console.log(data[0])
+
+		// lets try making an array
+		let productArray = []
+		for (let i =0; i < data.length; i++) {
+			productArray.push(data[i].productTitle)
+		//	console.log(productTitle)
+
+		}
+		console.log(productArray)
+		let product1 = data[0].productTitle
+		console.log(product1)
+		let elements = data.results.map((data) => {
+			return (
+				<div key={pic.results}>
+					<p>{pic.productTitle}</p>
+				</div>
+				)
+		})
+		this.setState({elements: elements});
+		console.log("state", this.state.elements);
+	})
+}
+
+render() {
+	return (
+		<div>
+		<div className="container2">
+		{this.state.elements}
+	</div>
+	</div>
+
+)
+}
+}
+
 const iconStyle = {
 	height: '100px',
 	width: '100px',
@@ -56,9 +117,8 @@ class Wand extends React.Component {
 	}
 }
 
-render(<App/>, window.document.getElementById("app"));
+
+render(<GetData/>, window.document.getElementById("app"));
 render(<Sword/>, window.document.getElementById("sword_container"));
 render(<Cup/>, window.document.getElementById("cup_container"));
 render(<Wand/>, window.document.getElementById("wand_container"));
-
-console.log("it works");

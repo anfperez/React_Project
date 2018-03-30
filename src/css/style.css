@@ -1,3 +1,74 @@
 body {
 	background-image: url('https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9a84a5ba38587d42a1069b494255cc68&auto=format&fit=crop&w=1655&q=80');
 }
+
+#app {
+	background-color: green;
+}
+
+p {
+	background-color: pink;
+}
+
+#centering {
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 10px;
+    width: 500px;
+    height: 500px;
+    background-color: blue;
+    padding: 10px;
+}
+
+@media screen and (max-width:959px) {
+	#app {
+		width: 100%;
+	}
+	p {
+		width: 100%;
+	}
+	#centering {
+		width: 100%;
+	}
+
+	#centered {
+		width: 100%;
+	}
+}
+
+
+@media screen and (max-width:640px) {
+	#app {
+		width: 100%;
+	}
+	p {
+		width: 100%;
+	}
+	#centering {
+		width: 100%;
+	}
+
+	#centered {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width:320px) {
+	#app {
+		width: 100%;
+	}
+	p {
+		width: 100%;
+	}
+	#centering {
+		width: 100%;
+	}
+
+	#centered {
+		width: 100%;
+	}
+}
+
