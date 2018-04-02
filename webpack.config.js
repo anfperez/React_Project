@@ -6,6 +6,9 @@ let SRC_DIR = path.resolve(__dirname, "src");
 
 
 let config = {
+	    resolve: {
+        extensions: ['.web.js', '.ts', '.tsx', '.js', '.json', '.web.jsx', '.jsx']
+    },
 	entry: SRC_DIR + "/app/index.js",
 	output: {
 		path: DIST_DIR,
@@ -26,7 +29,11 @@ let config = {
 
 		}
 		]
-	}
+	},
+	target: "node"
+	//node: {
+   //fs: "empty"
+//}
 };
 
 module.exports = config;

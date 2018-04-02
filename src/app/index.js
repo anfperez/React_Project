@@ -37,15 +37,23 @@ class GetData extends React.Component {
 		)
 	}
 }
+
+let productArray= [];
+let productJSON;
 //this needs a render function to work
 class Item extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			elements: [],
+			productJSON: []
 		};
 	}
 	componentWillMount() {
+/*
+const jsonFile = "/tmp/exampleFile.json";
+writeJsonFile(jsonFile,{"isThisReal":ture,"author":"amit"}).catch(err => console.log(err));
+	*/
 	console.log("got here")
 	fetch('http://tech.work.co/shopping-cart/products.json')
 	.then(results => {
@@ -57,23 +65,29 @@ class Item extends React.Component {
 		// lets try making an array
 		let productArray = []
 		for (let i =0; i < data.length; i++) {
-			productArray.push(data[i].productTitle)
+			productArray.push(data[i])
 		//	console.log(productTitle)
 
 		}
-		console.log(productArray)
+		console.log(JSON.stringify(productArray))
+
+		productJSON = JSON.stringify(productArray)
 		let product1 = data[0].productTitle
 		console.log(product1)
 		let elements = data.map((product) => {
 			return (
 				<div key={product.results}>
-					<p>{product.id}</p>
+					<p>{product.productTitle}</p>
+					<p>{product.price.value} {product.price.currency}</p>
 				</div>
 				)
 		})
+		console.log("elements is" + elements.ty)
 		this.setState({elements: elements});
-		console.log("state", this.state.elements);
+		console.log("state", this.state.elements[0]);
+		console.log(productJSON) // this is the exact thing I need to get!!!
 	})
+	// console.log(productJSON) is this the extent of where I can access productJSON? it won't log to the console here...
 }
 
 render() {
@@ -88,6 +102,8 @@ render() {
 }
 }
 
+console.log(Item.productJSON)
+
 const iconStyle = {
 	height: '100px',
 	width: '100px',
@@ -96,6 +112,36 @@ const iconStyle = {
 	float: 'left',
 	margin: '5px'
 };
+
+/*
+ const productLink = 'http://tech.work.co/shopping-cart/products.json'
+class PracticingApiCalls extends React.Component {
+	fetch(productLink)
+	.then((response) => response.json())
+	.then((responseJson) => {
+		return responseJson.id;
+		console.log(responseJson.id);
+	})
+	.catch((error) => {
+		console.log(error);
+	});
+	render() {
+		<div> stuff </div>
+	}
+}
+	/*
+	fs.readFile("http://tech.work.co/shopping-cart/products.json", (err, data) => {
+  if (err) throw errr;
+  products = JSON.parse(data);
+  console.log(data)
+	render() {
+		return (
+			<div> yup </div>
+			)
+	}
+});
+}
+*/
 
 class Sword extends React.Component {
 	render() {
@@ -122,7 +168,7 @@ class Wand extends React.Component {
 }
 
 
-render(<GetData/>, window.document.getElementById("app"));
+render(<Item/>, window.document.getElementById("app"));
 render(<Sword/>, window.document.getElementById("sword_container"));
 render(<Cup/>, window.document.getElementById("cup_container"));
 render(<Wand/>, window.document.getElementById("wand_container"));
