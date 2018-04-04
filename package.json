@@ -18,6 +18,8 @@
     "npm": "^5.8.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-strap": "0.0.1",
+    "reactstrap": "^5.0.0",
     "webfontloader": "^1.6.28",
     "write-json-file": "^2.3.0"
   },

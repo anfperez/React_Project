@@ -1,6 +1,24 @@
 import React from "react";
 import { render } from "react-dom";
 import WebFont from "webfontloader";
+import { Card, CardTitle, CardText, CardImg, CardImgOverlay } from 'reactstrap';
+
+const Example = (props) => {
+  return (
+    <div>
+      <Card inverse>
+        <CardImg width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97270&w=318&h=270&bg=333333&txtclr=666666" alt="Card image cap" />
+        <CardImgOverlay>
+          <CardTitle>Card Title</CardTitle>
+          <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
+          <CardText>
+            <small className="text-muted">Last updated 3 mins ago</small>
+          </CardText>
+        </CardImgOverlay>
+      </Card>
+    </div>
+  );
+};
 
 WebFont.load({
 	google: {
@@ -51,8 +69,6 @@ class Item extends React.Component {
 	}
 	componentWillMount() {
 /*
-const jsonFile = "/tmp/exampleFile.json";
-writeJsonFile(jsonFile,{"isThisReal":ture,"author":"amit"}).catch(err => console.log(err));
 	*/
 	console.log("got here")
 	fetch('http://tech.work.co/shopping-cart/products.json')
@@ -168,7 +184,7 @@ class Wand extends React.Component {
 }
 
 
-render(<Item/>, window.document.getElementById("app"));
+render(<Example/>, window.document.getElementById("app"));
 render(<Sword/>, window.document.getElementById("sword_container"));
 render(<Cup/>, window.document.getElementById("cup_container"));
 render(<Wand/>, window.document.getElementById("wand_container"));
