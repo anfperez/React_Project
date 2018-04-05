@@ -1,25 +1,47 @@
 import React from "react";
 import { render } from "react-dom";
 import WebFont from "webfontloader";
-import { Card, CardTitle, CardText, CardImg, CardImgOverlay } from 'reactstrap';
+import { Card, CardTitle, CardText, CardImg, CardImgOverlay, Button } from 'reactstrap';
 
+const cardBodyStyle = {
+	borderStyle: 'solid',
+	borderColor: 'black',
+	backgroundColor: 'WhiteSmoke',
+	margin: '0 auto',
+	width: '100%',
+	height: '100%'
+
+}
+/*
+const wrapperStyle = {
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+}
+*/
 const Example = (props) => {
   return (
     <div>
-      <Card inverse>
-        <CardImg width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97270&w=318&h=270&bg=333333&txtclr=666666" alt="Card image cap" />
-        <CardImgOverlay>
-          <CardTitle>Card Title</CardTitle>
-          <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-          <CardText>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </CardText>
-        </CardImgOverlay>
+      <Card style={cardBodyStyle}>
+        <CardTitle>First Item in Cart</CardTitle>
+        <CardText>First Item Description</CardText>
+        <Button>Remove</Button><Button>+</Button><Button>-</Button>
+      </Card>
+      <Card style={cardBodyStyle}>
+        <CardTitle>Special Title Treatment</CardTitle>
+        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+        <Button>Go somewhere</Button>
+      </Card>
+      <Card style={cardBodyStyle}>
+        <CardTitle>Special Title Treatment</CardTitle>
+        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+        <Button>Go somewhere</Button>
       </Card>
     </div>
   );
 };
-
 WebFont.load({
 	google: {
 		families: ['Titillium Web:300,400,700', 'sans-serif']
@@ -183,8 +205,7 @@ class Wand extends React.Component {
 	}
 }
 
-
-render(<Example/>, window.document.getElementById("app"));
 render(<Sword/>, window.document.getElementById("sword_container"));
 render(<Cup/>, window.document.getElementById("cup_container"));
 render(<Wand/>, window.document.getElementById("wand_container"));
+render(<Example/>, window.document.getElementById("app"));
